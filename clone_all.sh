@@ -86,10 +86,11 @@ else
 
 	# If specified, anonymize all of the directories
  	if [ "$anonymized" != "true" ]; then
+	    identifier="temp"
 	    for file in $identifier*; do
 		randomName=`cat /dev/urandom | env LC_CTYPE=C tr -dc a-zA-Z0-9 | head -c 16; echo`
-		echo "$randomName $file"
-		mv "temp" $randomName
+		echo "$randomName $file" >> anonymization-map.txt
+		mv $file $randomName
 	    done
 	fi
 fi
