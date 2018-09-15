@@ -85,7 +85,7 @@ else
 	done <<< "$justURLs"
 
 	# If specified, anonymize all of the directories
- 	if [ "$anonymized" != "true" ]; then
+ 	if [ "$anonymized" == "true" ]; then
 	    for file in $identifier*; do
 		randomName=`cat /dev/urandom | env LC_CTYPE=C tr -dc a-zA-Z0-9 | head -c 16; echo`
 		echo "$randomName $file" >> anonymization-map.txt
