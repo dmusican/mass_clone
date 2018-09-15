@@ -87,7 +87,9 @@ else
 	# If specified, anonymize all of the directories
  	if [ "$anonymized" == "true" ]; then
 	    for file in $identifier*; do
-		randomName=`cat /dev/urandom | env LC_CTYPE=C tr -dc a-zA-Z0-9 | head -c 16; echo`
+		randomNameOutput=`echo -n "$file" | shasum`
+		randomNameOutputArray=($randomNameOutput)
+		randomName=${randomNameOutputArray[0]}
 		echo "$randomName $file" >> anonymization-map.txt
 		mv $file $randomName
 	    done
