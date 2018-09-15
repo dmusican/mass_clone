@@ -20,6 +20,7 @@ else
 	organization="Organization"
 	username="username"
 	protocol="ssh"
+	anonymization="false"
 
-	./clone_all.sh ${organization} ${assignment} ${username} ${protocol}
+	./clone_all.sh ${organization} ${assignment} ${username} ${protocol} ${anonymization}
 fi
