@@ -18,8 +18,8 @@ if [[ $# -ne 4 && $# -ne 5 ]];
 	echo "2. Name of Identifier (assignment)"
 	echo "3. Your github username"
 	echo "4. The protocol for cloning the repo (ssh/https)"
-        echo "5. Anonymization? (false/true). Optional. If true, the repository names are replaced by a random identifier,"
-        echo "   and a separate file is created mapping the random identifiers to GitHub usernames."
+	echo "5. Anonymization? (false/true). Optional. If true, the repository names are replaced by a random identifier,"
+	echo "   and a separate file is created mapping the random identifiers to GitHub usernames."
 	echo ""
 	echo "note: To use ssh, you must set up an ssh key with github"
 	echo "You may find it useful to set up your shell to know your GitHub credentials for https"
@@ -28,7 +28,7 @@ else
 	identifier=$2
 	githubUsername=$3
 	tag=$4
-        anonymized=$5
+	anonymized=$5
 
 	if [ "$tag" == "https" ];
 		then
@@ -39,9 +39,9 @@ else
 		echo "Using ssh"
 	fi
 
-        if [ "$anonymized" != "true" ]; then
-            anonymized="false"
-        fi
+	if [ "$anonymized" != "true" ]; then
+	    anonymized="false"
+	fi
 
 	echo "Enter Github Password:"
 	read -s githubPassword
@@ -49,7 +49,7 @@ else
 	# Get the first page of repo results (100 entries)
 	rawJSON=$(curl --user  "$githubUsername:$githubPassword" "https://api.github.com/orgs/$organization/repos?per_page=100" -v)
 	# Get the line that tells if this is the last page
-    numRepos=$(echo "$rawJSON" | grep -o "full_name" | wc -l)
+	numRepos=$(echo "$rawJSON" | grep -o "full_name" | wc -l)
 	page=2
 
 	# While we have not seen the last page
