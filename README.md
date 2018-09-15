@@ -3,7 +3,7 @@ This is a shell script that will clone multiple repositories.  The intended usag
 
 # clone_all.sh
 
-This script takes 4 arguments in order to clone repos based on organization(github classroom), a unique identifier(assignment), username, and protocol.
+This script takes 4 arguments in order to clone repos based on organization(github classroom), a unique identifier(assignment), username, and protocol. An optional 5th argument can be used to hash the titles of the directories so that grading can be done anonymously, if desired.
 
 This script will make a new folder based on the unique identifier, then clone each to their own subfolder.
 
