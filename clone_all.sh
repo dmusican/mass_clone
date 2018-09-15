@@ -18,7 +18,7 @@ if [[ $# -ne 4 && $# -ne 5 ]];
 	echo "2. Name of Identifier (assignment)"
 	echo "3. Your github username"
 	echo "4. The protocol for cloning the repo (ssh/https)"
-        echo "5. Anonymization? (true/false). Optional. If true, the repository names are replaced by a random identifier,"
+        echo "5. Anonymization? (false/true). Optional. If true, the repository names are replaced by a random identifier,"
         echo "   and a separate file is created mapping the random identifiers to GitHub usernames."
 	echo ""
 	echo "note: To use ssh, you must set up an ssh key with github"
@@ -28,7 +28,7 @@ else
 	identifier=$2
 	githubUsername=$3
 	tag=$4
-        anonymized = $5
+        anonymized=$5
 
 	if [ "$tag" == "https" ];
 		then
@@ -38,6 +38,10 @@ else
 		tag="ssh_url"
 		echo "Using ssh"
 	fi
+
+        if [ "$anonymized" != "true" ]; then
+            anonymized="false"
+        fi
 
 	echo "Enter Github Password:"
 	read -s githubPassword
