@@ -6,7 +6,7 @@
 # Written By: Brian Konzman
 
 
-if [[ $# -ne 4 ]];
+if [[ $# -ne 4 && $# -ne 5 ]];
 	then
 	echo ""
 	echo "This script will clone groups of repos from an organization using an identifier"
@@ -18,6 +18,8 @@ if [[ $# -ne 4 ]];
 	echo "2. Name of Identifier (assignment)"
 	echo "3. Your github username"
 	echo "4. The protocol for cloning the repo (ssh/https)"
+        echo "5. Anonymization? (true/false). Optional. If true, the repository names are replaced by a random identifier,"
+        echo "   and a separate file is created mapping the random identifiers to GitHub usernames."
 	echo ""
 	echo "note: To use ssh, you must set up an ssh key with github"
 	echo "You may find it useful to set up your shell to know your GitHub credentials for https"
@@ -26,6 +28,7 @@ else
 	identifier=$2
 	githubUsername=$3
 	tag=$4
+        anonymized = $5
 
 	if [ "$tag" == "https" ];
 		then
